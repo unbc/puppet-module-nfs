@@ -112,6 +112,7 @@ class nfs (
       enable    => true,
       subscribe => Package[$nfs_package_real],
     }
+    Service['nfs_service'] -> Types::Mount <| fstype == 'nfs' |>
   }
 
   if $mounts != undef {
